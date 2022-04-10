@@ -1,2 +1,4 @@
-aws-cdk-lib==2.14.0
-constructs>=10.0.0,<11.0.0
+pandas==1.4.2
+emoji==1.7.0
+Janome==0.4.2
+wordcloud==1.8.1
