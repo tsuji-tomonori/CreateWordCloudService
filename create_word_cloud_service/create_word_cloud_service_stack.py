@@ -28,7 +28,7 @@ class CreateWordCloudServiceStack(Stack):
         )
         create_word_cloud_service.build()
 
-        layer_names = [x for x in (
+        layer_names = [x.name for x in (
             Path.cwd() / "layer").iterdir() if x.is_dir()]
 
         for layer_name in layer_names:
