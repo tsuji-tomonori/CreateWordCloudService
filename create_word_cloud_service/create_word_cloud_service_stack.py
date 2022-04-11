@@ -1,3 +1,4 @@
+from pathlib import Path
 from aws_cdk import Stack
 from aws_cdk import aws_lambda as _lambda
 from aws_cdk import aws_s3 as s3
@@ -26,18 +27,18 @@ class CreateWordCloudServiceStack(Stack):
             param
         )
         create_word_cloud_service.build()
-        create_word_cloud_service.add_layer(
-            LayerParam(
-                "font",
-                "Japanese dictionary Android app"
+
+        layer_names = [x for x in (
+            Path.cwd() / "layer").iterdir() if x.is_dir()]
+
+        for layer_name in layer_names:
+            create_word_cloud_service.add_layer(
+                LayerParam(
+                    layer_name,
+                    f"create cdk {layer_name}"
+                )
             )
-        )
-        create_word_cloud_service.add_layer(
-            LayerParam(
-                "requirements",
-                "pip install requirements.txt"
-            )
-        )
+
         input_bucket = s3.Bucket.from_bucket_name(
             self, "s3s-file-output-bucket-cdk",
             "s3s-file-output-bucket-cdk"

@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Build
-        run: sh deploy_layer.sh
+        run: python deploy_layer.py
 
       - name: CDK synth
         run: cdk synth
