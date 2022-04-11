@@ -24,8 +24,11 @@ for req in requirements:
 
 # font
 # git clone https://github.com/fontdasu/ShipporiAntique.git layer/font/
+# すべてlayerに入れることが出来ないため, fontだけ入れる
 subprocess.check_output(
-    ["git", "clone", "https://github.com/fontdasu/ShipporiAntique.git", str(layer_dir / "font")])
+    ["git", "clone", "https://github.com/fontdasu/ShipporiAntique.git", str(Path.cwd() / "temp")])
+subprocess.check_output(
+    ["cp", "-r", str(Path.cwd() / "temp" / "fonts"), str(layer_dir / "font")])
 
 
 dirs = [x for x in layer_dir.iterdir() if x.is_dir()]
