@@ -20,9 +20,13 @@ with requirements_txt.open() as f:
 
 for req in requirements:
     subprocess.check_output(
-        ["pip", "install", req.requirement, "-t", str(layer_dir / req.name)])
+        ["pip", "install", req.requirement, "-t", str(layer_dir / req.name / "python")])
 
 # font
 # git clone https://github.com/fontdasu/ShipporiAntique.git layer/font/
 subprocess.check_output(
     ["git", "clone", "https://github.com/fontdasu/ShipporiAntique.git", str(layer_dir / "font")])
+
+
+dirs = [x for x in layer_dir.iterdir() if x.is_dir()]
+print(dirs)
