@@ -102,8 +102,6 @@ class LambdaBuilder(AwsCdkBase):
             code=_lambda.DockerImageCode.from_image_asset(
                 directory="lambda",
             ),
-            handler="lambda_function.handler",
-            runtime=_lambda.Runtime.PYTHON_3_9,
             function_name=resource_name,
             environment={
                 "LOG_LEVEL": "INFO",
