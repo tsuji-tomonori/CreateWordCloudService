@@ -28,17 +28,6 @@ class CreateWordCloudServiceStack(Stack):
         )
         create_word_cloud_service.build()
 
-        layer_names = [x.name for x in (
-            Path.cwd() / "layer").iterdir() if x.is_dir()]
-
-        for layer_name in layer_names:
-            create_word_cloud_service.add_layer(
-                LayerParam(
-                    layer_name,
-                    f"create cdk {layer_name}"
-                )
-            )
-
         input_bucket = s3.Bucket.from_bucket_name(
             self, "s3s-file-output-bucket-cdk",
             "s3s-file-output-bucket-cdk"
