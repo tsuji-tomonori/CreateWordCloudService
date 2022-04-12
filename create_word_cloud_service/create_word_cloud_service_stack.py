@@ -16,7 +16,7 @@ class CreateWordCloudServiceStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         param = AwsStackParam(
-            core_service_name="create_word_cloud_service",
+            core_service_name="create_word_cloud",
             description="Create Word Cloud img.",
             project_name="CreateWordClooudService",
             usetype="service"
@@ -62,5 +62,5 @@ class CreateWordCloudServiceStack(Stack):
 
         create_word_cloud_service.fn.add_environment(
             key="FONT_PATH",
-            value="/opt/font/fonts/ttf/ShipporiAntique-Regular.ttf"
+            value="fonts/ttf/ShipporiAntique-Regular.ttf"
         )

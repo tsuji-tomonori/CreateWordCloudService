@@ -30,11 +30,7 @@ jobs:
 
       - name: Setup dependencies
         run: |
-          pip install -r requirements.txt
           pip install -r requirements-dev.txt
-
-      - name: Build
-        run: python deploy_layer.py
 
       - name: CDK synth
         run: cdk synth

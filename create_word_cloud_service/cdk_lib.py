@@ -99,7 +99,7 @@ class LambdaBuilder(AwsCdkBase):
     def _create_lambda(self, resource_name: str):
         return _lambda.Function(
             self._scope, resource_name,
-            code=_lambda.Code.from_asset("lambda"),
+            code=_lambda.Code.from_docker_build("lambda"),
             handler="lambda_function.handler",
             runtime=_lambda.Runtime.PYTHON_3_9,
             function_name=resource_name,
