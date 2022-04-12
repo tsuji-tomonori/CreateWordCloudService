@@ -32,6 +32,7 @@ jobs:
         run: |
           pip install -r requirements-dev.txt
           git clone https://github.com/fontdasu/ShipporiAntique.git
+          cp ShipporiAntique/fonts/ttf/ShipporiAntique-Regular.ttf lambda/.
           ls -l
 
       - name: CDK synth
