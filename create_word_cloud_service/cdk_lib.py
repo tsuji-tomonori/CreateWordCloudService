@@ -97,9 +97,11 @@ class LambdaBuilder(AwsCdkBase):
 
     @ set_tags
     def _create_lambda(self, resource_name: str):
-        return _lambda.Function(
+        return _lambda.DockerImageFunction(
             self._scope, resource_name,
-            code=_lambda.Code.from_docker_build("lambda"),
+            code=_lambda.DockerImageCode.from_image_asset(
+                directory="lambda",
+            ),
             handler="lambda_function.handler",
             runtime=_lambda.Runtime.PYTHON_3_9,
             function_name=resource_name,
