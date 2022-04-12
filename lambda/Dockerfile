@@ -4,4 +4,4 @@ COPY lambda/*.py ShipporiAntique-Regular.ttf requirements.txt ./
 
 RUN python3.9 -m pip install -r requirements.txt -t .
 
-CMD ["lambda_function.lambda_handler"]
+CMD ["lambda_function.handler"]
