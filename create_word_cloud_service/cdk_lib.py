@@ -108,7 +108,7 @@ class LambdaBuilder(AwsCdkBase):
             },
             description=self._param.description,
             timeout=cdk.Duration.seconds(300),
-            memory_size=256,
+            memory_size=512,
             role=self.role,
         )
 
