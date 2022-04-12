@@ -37,8 +37,8 @@ def handler(event, context) -> None:
 
         ).generate(" ".join(data))
         upload_key = f"{input_key.split('.')[0]}.png"
-        wordcloud.to_file("wordcloud.png")
-        with open("wordcloud.png", "rb") as f:
+        wordcloud.to_file("/tmp/wordcloud.png")
+        with open("/tmp/wordcloud.png", "rb") as f:
             s3.upload(f, OUTPUT_BUCKET_NAME, upload_key)
 
 
