@@ -37,8 +37,8 @@ def handler(event, context) -> None:
 
         ).generate(" ".join(data))
         upload_key = f"{input_key.split('.')[0]}.png"
-        wordcloud.to_file(upload_key)
-        with open(upload_key, "rb") as f:
+        wordcloud.to_file(input_key.replace("/", "_"))
+        with open(input_key.replace("/", "_"), "rb") as f:
             s3.upload(f, OUTPUT_BUCKET_NAME, upload_key)
 
 
@@ -111,11 +111,3 @@ def stop_word(target: list, stop_list: list) -> list:
 def write_lst(path: str, data: list) -> None:
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(data))
-
-
-if __name__ == "__main__":
-    event = {
-        "bucket": "s3s-file-output-bucket-cdk",
-        "path": "UC8C1LLhBhf_E2IBPLSDJXlQ/e1q_1Wat_CM.csv",
-    }
-    handler(event, None)
