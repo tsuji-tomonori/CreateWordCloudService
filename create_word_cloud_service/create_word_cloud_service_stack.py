@@ -62,5 +62,5 @@ class CreateWordCloudServiceStack(Stack):
 
         create_word_cloud_service.fn.add_environment(
             key="FONT_PATH",
-            value="fonts/ttf/ShipporiAntique-Regular.ttf"
+            value="ShipporiAntique-Regular.ttf"
         )

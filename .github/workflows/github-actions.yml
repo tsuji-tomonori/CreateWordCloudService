@@ -31,6 +31,8 @@ jobs:
       - name: Setup dependencies
         run: |
           pip install -r requirements-dev.txt
+          git clone https://github.com/fontdasu/ShipporiAntique.git
+          ls -l
 
       - name: CDK synth
         run: cdk synth
