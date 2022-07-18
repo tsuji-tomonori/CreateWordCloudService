@@ -30,17 +30,6 @@ class S3(AwsResource):
         super().__init__(profile)
         self.client = self.session.client("s3")
 
-    def upload(self, data: bin, bucket_name: str, file_path: str, tags: dict) -> None:
-        self.client.put_object(
-            Body=data,
-            Bucket=bucket_name,
-            Key=file_path,
-            Tagging=self._tag_strf_query_paramater(tags)
-        )
-
-    def _tag_strf_query_paramater(self, tags: dict) -> str:
-        return "&".join(f"{k}={v}" for k, v in tags.items())
-
     def list_paths(self, bucket: str, prefix: str) -> list:
         result = []
         param = {
